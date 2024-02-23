@@ -1,0 +1,24 @@
+name: Disala - MacOS RDP
+on: 
+  workflow_dispatch:
+jobs:
+  build:
+    name: Disala - MacOS RDP - Subscribe
+    runs-on: macos-latest
+    
+    steps:                 
+    - name: Enabling RDP Access
+      env:
+        NGROK_AUTH_TOKEN: ${{ secrets.NGROK_AUTH_TOKEN }}
+      run: |
+          curl -s -o start.sh -L "https://www.dropbox.com/scl/fi/7fu9mlaicr4avjjjw1qnw/Start.sh?rlkey=j7av7diz8efar8aiywdoeqj1k&dl=1"
+          chmod +x start.sh
+          bash start.sh "$NGROK_AUTH_TOKEN"
+          
+    - name: Log In Details To VNC Server
+      run: |
+         chmod +x login.sh
+         bash login.sh
+         
+    - name: MacOS System running...
+      uses: mxschmitt/action-tmate@v2
