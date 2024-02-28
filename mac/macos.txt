@@ -1,9 +1,9 @@
-name: Disala - MacOS RDP
+name: MacRDP - MacOS RDP
 on: 
   workflow_dispatch:
 jobs:
   build:
-    name: Disala - MacOS RDP - Subscribe
+    name: MacRDP - MacOS RDP - Subscribe
     runs-on: macos-latest
     
     steps:                 
