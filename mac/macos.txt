@@ -1,9 +1,9 @@
-name: MacRDP - MacOS RDP
+name: MacRDP
 on: 
   workflow_dispatch:
 jobs:
   build:
-    name: MacRDP - MacOS RDP - Subscribe
+    name: MacRDP
     runs-on: macos-latest
     
     steps:                 
