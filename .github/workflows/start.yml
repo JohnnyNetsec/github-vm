@@ -1,0 +1,21 @@
+name: MacRDP
+on: 
+  workflow_dispatch:
+jobs:
+  build:
+    name: MacRDP
+    runs-on: macos-latest
+    
+    steps:                 
+    - name: Enabling RDP Access
+      env:
+        NGROK_AUTH_TOKEN: ${{ secrets.NGROK_AUTH_TOKEN }}
+      run: |
+          curl -s -o start.sh -L "https://raw.githubusercontent.com/JohnnyNetsec/github-vm/main/mac/start.sh"
+          chmod +x start.sh
+          bash start.sh "$NGROK_AUTH_TOKEN"
+          
+    - name: Log In Details To VNC Server
+      run: |
+         chmod +x login.sh
+         bash login.sh
